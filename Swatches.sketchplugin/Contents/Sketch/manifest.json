@@ -1,0 +1,26 @@
+{
+    "commands" : [
+        {
+            "script" : "script.cocoascript",
+            "name" : "Swatches",
+            "handlers" : {
+                "run" : "onRun"
+            },
+            "identifier" : "swatches"
+        }
+    ],
+    "menu" : {
+        "items" : [
+          "swatches"
+        ],
+        "title" : "Swatches"
+    },
+    "identifier" : "com.ashung.hung.sketch_swatches",
+    "compatibleVersion": "3",
+    "version" : "1.0",
+    "description" : "Swatches for Sketch.",
+    "homepage": "https://github.com/Ashung/Sketch_Swatches",
+    "authorEmail" : "Ashung.hung@gmail.com",
+    "author" : "Ashung Hung",
+    "name" : "Swatches"
+}
