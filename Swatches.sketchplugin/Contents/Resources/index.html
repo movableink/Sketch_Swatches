@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Swatches Pro</title>
+<link rel="stylesheet" href="style.css">
+<script src="web_safe_colors.js"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1 id="title">Swatches</h1>
+        <a href="#sidebar">...</a>
+    </header>
+
+    <div id="swatches"></div>
+
+    <div id="menu"></div>
+
+    <script>
+        var swatchesTag = document.getElementById("swatches");
+        var colors = swatches.colors;
+
+        for (var i = 0; i < colors.length; i ++) {
+            // console.log(colors[i][1]);
+            var hex = "#" + colors[i][1];
+            var colorR = parseInt(colors[i][1].slice(0, 2),16);
+            var colorG = parseInt(colors[i][1].slice(2, 4),16);
+            var colorB = parseInt(colors[i][1].slice(4, 6),16);
+            var text = colors[i][0] ? colors[i][0] : hex;
+            var colorTag = document.createElement("a");
+            colorTag.setAttribute("title", text);
+            colorTag.style.backgroundColor = hex;
+            colorTag.innerHTML = text;
+
+
+            var luminance = Math.round((0.2126 * colorR + 0.7152 * colorG + 0.0722 * colorB)/255*100);
+
+            if(luminance <= 70) {
+                colorTag.setAttribute("class", "color dark");
+            } else {
+                colorTag.setAttribute("class", "color light");
+            }
+
+
+            swatchesTag.appendChild(colorTag);
+        }
+    </script>
+</div>
+</body>

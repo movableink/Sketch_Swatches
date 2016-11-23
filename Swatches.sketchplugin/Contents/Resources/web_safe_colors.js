@@ -1,7 +1,7 @@
-{
+var swatches = {
 "name" : "Web Safe Colors",
 "colors" : [
-    ["", "000000"],
+    ["Black", "000000"],
     ["", "000033"],
     ["", "000066"],
     ["", "000099"],
@@ -216,6 +216,6 @@
     ["", "FFFF66"],
     ["", "FFFF99"],
     ["", "FFFFCC"],
-    ["", "FFFFFF"]
+    ["White", "FFFFFF"]
 ]
 }
