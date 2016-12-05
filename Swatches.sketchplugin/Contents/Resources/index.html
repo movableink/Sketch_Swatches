@@ -10,12 +10,26 @@
 <div class="container">
     <header>
         <h1 id="title">Swatches</h1>
-        <a href="#sidebar">...</a>
+        <a id="menuToggle" href="#menu">...</a>
+        <div id="menu"></div>
     </header>
 
-    <div id="swatches"></div>
+    <div class="swatchesWrap">
+        <div id="swatches"></div>
+    </div>
 
-    <div id="menu"></div>
+    <div class="tools">
+        <div class="colorInfo">
+            <div id="colorPreview"></div>
+            <strong id="colorName">Color Name</strong>
+            <code id="colorHex">#000000</code>
+        </div>
+        <ul class="actions">
+            <li><a href="#"><span>Fill</span><em>.</em></a></li>
+            <li><a href="#"><span>Stroke</span><em>.</em></a></li>
+            <li><a href="#"><span>Add to Document Colors</span><em>.</em></a></li>
+        </ul>
+    </div>
 
     <script>
         var swatchesTag = document.getElementById("swatches");
@@ -29,18 +43,18 @@
             var colorB = parseInt(colors[i][1].slice(4, 6),16);
             var text = colors[i][0] ? colors[i][0] : hex;
             var colorTag = document.createElement("a");
-            colorTag.setAttribute("title", text);
+            // colorTag.setAttribute("title", text);
             colorTag.style.backgroundColor = hex;
-            colorTag.innerHTML = text;
+            // colorTag.innerHTML = text;
+            colorTag.setAttribute("class", "color");
 
+            // var luminance = Math.round((0.2126 * colorR + 0.7152 * colorG + 0.0722 * colorB)/255*100);
 
-            var luminance = Math.round((0.2126 * colorR + 0.7152 * colorG + 0.0722 * colorB)/255*100);
-
-            if(luminance <= 70) {
-                colorTag.setAttribute("class", "color dark");
-            } else {
-                colorTag.setAttribute("class", "color light");
-            }
+            // if(luminance <= 70) {
+            //     colorTag.setAttribute("class", "color dark");
+            // } else {
+            //     colorTag.setAttribute("class", "color light");
+            // }
 
 
             swatchesTag.appendChild(colorTag);

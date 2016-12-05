@@ -1,15 +1,141 @@
 
+@font-face {
+    font-family: "SourceSans";
+    font-weight: normal;
+    src: local('Source Sans Pro'),
+    url("fonts/SourceSansPro-Regular.ttf") format('truetype');
+}
 
+@font-face {
+    font-family: "SourceSans";
+    font-weight: bold;
+    src: local('Source Sans Pro'),
+    url("fonts/SourceSansPro-Bold.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "SourceCode";
+    font-weight: bold;
+    src: local('Source Code Pro'),
+    url("fonts/SourceCodePro.ttf") format('truetype');
+}
 
 * {
     margin: 0;
     padding: 0;
 }
 
+html, body {
+    height: 100%;
+}
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font: 14px/18px "SourceSans", "Source Sans Pro", sans-serif;
+}
+header {
+    height: 56px;
+    min-height: 56px;
+    background: #eee;
+    display: flex;
+    flex-direction: row;
+}
+header h1 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    margin: 16px 0 16px 56px;
+    color: rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: auto;
+}
+#menuToggle {
+    display: block;
+    width: 24px;
+    padding-top: 24px;
+    height: 0;
+    overflow: hidden;
+    margin: 16px;
+    background: url(assets/menu.svg) no-repeat;
+}
+
+.swatchesWrap {
+    flex: auto;
+    padding: 16px;
+    overflow: scroll;
+}
+#swatches {
+    width: 360px;
+}
+
+.tools {
+    height: 56px;
+    min-height: 56px;
+    padding: 0 16px;
+    background: #eee;
+}
+.colorInfo {
+    float: left;
+    width: 200px;
+}
+#colorPreview {
+    width: 24px;
+    height: 24px;
+    background: #000;
+    border-radius: 2px;
+    float: left;
+    margin: 16px 8px 16px 0;
+}
+#colorName {
+    display: block;
+    padding-top: 10px;
+    color: rgba(0, 0, 0, .7);
+}
+#colorHex {
+    color: rgba(0, 0, 0, .5);
+    font: 12px/15px "SourceCode", "Source Code Pro", monospace;
+}
+.actions {
+    float: right;
+    list-style: none;
+}
+.actions li {
+    position: relative;
+    float: left;
+    /*width: 24px;
+    height: 24px;*/
+    margin: 16px 0 16px 4px;
+
+    background: #f00;
+}
+.actions span {display: none;}
+.actions a:hover span{
+    display: block;
+    position: absolute;
+    z-index: 100;
+    top: -30px;
+    background: rgba(0, 0, 0, .8);
+    color: #fff;
+    padding: 10px;
+    white-space: nowrap;
+    left: -50%;
+}
+
+.actions em {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+
 .color {
     float: left;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     /*margin: 1px 1px 0 0;*/
     background: #000;
     color: #fff;
