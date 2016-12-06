@@ -3,15 +3,59 @@
 <head>
 <meta charset="utf-8">
 <title>Swatches Pro</title>
-<link rel="stylesheet" href="style.css">
-<script src="web_safe_colors.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/jquery-3.1.1.min.js"></script>
+<script>
+function removeSwatches() {
+    $("#swatches").empty();
+}
+function initSwatches(title) {
+
+    $("#title").text(title);
+
+    // init
+    $("#swatches a").eq(0).addClass("focus");
+    updateInterface($("#swatches a").eq(0).attr("href"), $("#swatches a").eq(0).attr("title"));
+
+    $("#swatches a").each(function(){
+        $(this).click(function(){
+            $("#swatches a.focus").each(function(){
+                $(this).removeClass("focus");
+            });
+            $(this).addClass("focus");
+            updateInterface($(this).attr("href"), $(this).attr("title"));
+        });
+    });
+
+    function updateInterface(hex, name) {
+        $("#colorPreview").css("backgroundColor", hex);
+        $("#colorName").text(name);
+        $("#colorHex").text(hex);
+        $("#icon_fill").attr("href", hex + "-fill");
+        $("#icon_stroke").attr("href", hex + "-stroke");
+        $("#icon_add").attr("href", hex + "-add");
+    }
+}
+</script>
+<script src="colors/html_name_colors.js"></script>
+<script src="colors/ral_colors.js"></script>
+<script src="init.js"></script>
 </head>
 <body>
 <div class="container">
     <header>
         <h1 id="title">Swatches</h1>
-        <a id="menuToggle" href="#menu">...</a>
-        <div id="menu"></div>
+        <a id="menuToggle" href="#menu">
+            <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path d="M4,17 L20,17 L20,19 L4,19 L4,17 Z M4,11 L20,11 L20,13 L4,13 L4,11 Z M4,5 L20,5 L20,7 L4,7 L4,5 Z" fill-opacity="0.7" fill="#000000"></path>
+            </svg>
+        </a>
+        <ul class="menu">
+            <li><a href="javascript:init_html_name_colors();">HTML Name Colors</a></li>
+            <li><a href="javascript:init_ral_colors();">RAL Colors</a></li>
+            <li><a href="#">Material Design</a></li>
+            <li><a href="#">Material Design</a></li>
+        </ul>
     </header>
 
     <div class="swatchesWrap">
@@ -25,40 +69,31 @@
             <code id="colorHex">#000000</code>
         </div>
         <ul class="actions">
-            <li><a href="#"><span>Fill</span><em>.</em></a></li>
-            <li><a href="#"><span>Stroke</span><em>.</em></a></li>
-            <li><a href="#"><span>Add to Document Colors</span><em>.</em></a></li>
+            <li>
+                <a id="icon_fill" href="#">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z M8,8 L16,8 L16,16 L8,16 L8,8 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
+                    </svg>
+                    <span>Fill</span>
+                </a>
+            </li>
+            <li>
+                <a id="icon_stroke" href="#">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
+                    </svg>
+                    <span>Stroke</span>
+                </a>
+            </li>
+            <li>
+                <a id="icon_add" href="#">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M11,11 L9,11 L9,13 L11,13 L11,15 L13,15 L13,13 L15,13 L15,11 L13,11 L13,9 L11,9 L11,11 Z M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
+                    </svg>
+                    <span>Add to Document Colors</span>
+                </a>
+            </li>
         </ul>
     </div>
-
-    <script>
-        var swatchesTag = document.getElementById("swatches");
-        var colors = swatches.colors;
-
-        for (var i = 0; i < colors.length; i ++) {
-            // console.log(colors[i][1]);
-            var hex = "#" + colors[i][1];
-            var colorR = parseInt(colors[i][1].slice(0, 2),16);
-            var colorG = parseInt(colors[i][1].slice(2, 4),16);
-            var colorB = parseInt(colors[i][1].slice(4, 6),16);
-            var text = colors[i][0] ? colors[i][0] : hex;
-            var colorTag = document.createElement("a");
-            // colorTag.setAttribute("title", text);
-            colorTag.style.backgroundColor = hex;
-            // colorTag.innerHTML = text;
-            colorTag.setAttribute("class", "color");
-
-            // var luminance = Math.round((0.2126 * colorR + 0.7152 * colorG + 0.0722 * colorB)/255*100);
-
-            // if(luminance <= 70) {
-            //     colorTag.setAttribute("class", "color dark");
-            // } else {
-            //     colorTag.setAttribute("class", "color light");
-            // }
-
-
-            swatchesTag.appendChild(colorTag);
-        }
-    </script>
 </div>
 </body>

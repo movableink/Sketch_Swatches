@@ -3,24 +3,24 @@
     font-family: "SourceSans";
     font-weight: normal;
     src: local('Source Sans Pro'),
-    url("fonts/SourceSansPro-Regular.ttf") format('truetype');
+    url("SourceSansPro-Regular.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "SourceSans";
     font-weight: bold;
     src: local('Source Sans Pro'),
-    url("fonts/SourceSansPro-Bold.ttf") format('truetype');
+    url("SourceSansPro-Bold.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "SourceCode";
     font-weight: bold;
     src: local('Source Code Pro'),
-    url("fonts/SourceCodePro.ttf") format('truetype');
+    url("SourceCodePro.ttf") format('truetype');
 }
 
-* {
+body, ul, p {
     margin: 0;
     padding: 0;
 }
@@ -37,7 +37,7 @@ html, body {
 header {
     height: 56px;
     min-height: 56px;
-    background: #eee;
+    /*background: #eee;*/
     display: flex;
     flex-direction: row;
 }
@@ -56,13 +56,23 @@ header h1 {
 #menuToggle {
     display: block;
     width: 24px;
-    padding-top: 24px;
-    height: 0;
+    height: 24px;
     overflow: hidden;
     margin: 16px;
-    background: url(assets/menu.svg) no-repeat;
+}
+#menuToggle:hover svg path {
+    fill: #2979FF;
+    fill-opacity: 1;
 }
 
+.menu {
+    position: absolute;
+}
+
+
+/*
+    Swatches
+*/
 .swatchesWrap {
     flex: auto;
     padding: 16px;
@@ -71,12 +81,26 @@ header h1 {
 #swatches {
     width: 360px;
 }
+#swatches a {
+    float: left;
+    width: 30px;
+    height: 30px;
+    background: #000;
+}
+#swatches a.focus {
+    position: relative;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+}
 
+/*
+    Tools
+*/
 .tools {
     height: 56px;
     min-height: 56px;
     padding: 0 16px;
-    background: #eee;
+    /*background: #eee;*/
 }
 .colorInfo {
     float: left;
@@ -99,6 +123,10 @@ header h1 {
     color: rgba(0, 0, 0, .5);
     font: 12px/15px "SourceCode", "Source Code Pro", monospace;
 }
+
+/*
+    Actions
+*/
 .actions {
     float: right;
     list-style: none;
@@ -106,40 +134,40 @@ header h1 {
 .actions li {
     position: relative;
     float: left;
-    /*width: 24px;
-    height: 24px;*/
     margin: 16px 0 16px 4px;
-
-    background: #f00;
 }
-.actions span {display: none;}
-.actions a:hover span{
+.actions span {
+    opacity: 0;
     display: block;
     position: absolute;
     z-index: 100;
-    top: -30px;
+    top: -40px;
     background: rgba(0, 0, 0, .8);
     color: #fff;
     padding: 10px;
     white-space: nowrap;
-    left: -50%;
+    border-radius: 4px;
+    transition: all .5s ease;
 }
-
-.actions em {
+.actions a#icon_fill span {
+    left: -40%;
+}
+.actions a#icon_stroke span {
+    left: -70%;
+}
+.actions a#icon_add span {
+    right: 0%;
+}
+.actions svg {
     display: block;
     width: 24px;
     height: 24px;
+    overflow: hidden;
 }
-
-
-.color {
-    float: left;
-    width: 30px;
-    height: 30px;
-    /*margin: 1px 1px 0 0;*/
-    background: #000;
-    color: #fff;
+.actions svg:hover path {
+    fill: #2979FF;
+    fill-opacity: 1;
 }
-.light {
-    color: rgba(0, 0, 0, 0.7);
+.actions svg:hover + span {
+    opacity: 1;
 }
