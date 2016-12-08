@@ -10,13 +10,10 @@ function removeSwatches() {
     $("#swatches").empty();
 }
 function initSwatches(title) {
-
     $("#title").text(title);
-
     // init
     $("#swatches a").eq(0).addClass("focus");
     updateInterface($("#swatches a").eq(0).attr("href"), $("#swatches a").eq(0).attr("title"));
-
     $("#swatches a").each(function(){
         $(this).click(function(){
             $("#swatches a.focus").each(function(){
@@ -26,7 +23,6 @@ function initSwatches(title) {
             updateInterface($(this).attr("href"), $(this).attr("title"));
         });
     });
-
     function updateInterface(hex, name) {
         $("#colorPreview").css("backgroundColor", hex);
         $("#colorName").text(name);
@@ -37,8 +33,13 @@ function initSwatches(title) {
     }
 }
 </script>
+<!--
+    Load all swatch file
+-->
 <script src="colors/html_name_colors.js"></script>
 <script src="colors/ral_colors.js"></script>
+<script src="colors/material_design_colors.js"></script>
+
 <script src="init.js"></script>
 </head>
 <body>
@@ -50,12 +51,22 @@ function initSwatches(title) {
                 <path d="M4,17 L20,17 L20,19 L4,19 L4,17 Z M4,11 L20,11 L20,13 L4,13 L4,11 Z M4,5 L20,5 L20,7 L4,7 L4,5 Z" fill-opacity="0.7" fill="#000000"></path>
             </svg>
         </a>
-        <ul class="menu">
-            <li><a href="javascript:init_html_name_colors();">HTML Name Colors</a></li>
-            <li><a href="javascript:init_ral_colors();">RAL Colors</a></li>
-            <li><a href="#">Material Design</a></li>
-            <li><a href="#">Material Design</a></li>
-        </ul>
+        <div id="menu">
+            <a id="menuToggle-close" href="#">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path fill-opacity="0.7" fill="#000000" d="M12 10.5857864 7.05025253 5.63603897 5.63603897 7.05025253 10.5857864 12 5.63603897 16.9497475 7.05025253 18.363961 12 13.4142136 16.9497475 18.363961 18.363961 16.9497475 13.4142136 12 18.363961 7.05025253 16.9497475 5.63603897z"></path>
+                </svg>
+            </a>
+            <ul class="menulist">
+                <!--
+                    Add Color list here
+                -->
+                <li><a href="javascript:init_material_design_colors();">Material Design</a></li>
+                <li><a href="javascript:init_html_name_colors();">HTML Name Colors</a></li>
+                <li><a href="javascript:init_ral_colors();">RAL Colors</a></li>
+
+            </ul>
+        </div>
     </header>
 
     <div class="swatchesWrap">
@@ -96,4 +107,24 @@ function initSwatches(title) {
         </ul>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+    $("#menuToggle").click(function(){
+        $("#menu").css("display", "block");
+        $("#menu").animate({
+            "height" : $("body").height()
+        });
+    });
+    $("#menuToggle-close").click(function(){
+        $("#menu").animate({
+            "height" : "0"
+        });
+    });
+    $(".menulist a").click(function(){
+        $("#menu").animate({
+            "height" : "0"
+        });
+    });
+});
+</script>
 </body>
