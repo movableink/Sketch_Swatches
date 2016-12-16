@@ -158,7 +158,7 @@ var init_html_name_colors = function() {
             );
         }
 
-        initSwatches(title);
+        initSwatches(title, "init_html_name_colors");
 
     });
 }

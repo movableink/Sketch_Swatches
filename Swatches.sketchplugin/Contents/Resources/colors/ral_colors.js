@@ -226,7 +226,7 @@ var init_ral_colors = function() {
             );
         }
 
-        initSwatches(title);
+        initSwatches(title, "init_ral_colors");
 
 
     });

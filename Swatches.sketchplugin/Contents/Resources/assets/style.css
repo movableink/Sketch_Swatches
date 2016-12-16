@@ -27,6 +27,7 @@ body, ul, p {
 
 html, body {
     height: 100%;
+    overflow: hidden;
 }
 .container {
     height: 100%;
@@ -37,7 +38,6 @@ html, body {
 header {
     height: 56px;
     min-height: 56px;
-    /*background: #eee;*/
     display: flex;
     flex-direction: row;
     -webkit-user-select: none;
@@ -88,6 +88,7 @@ header h1 {
 }
 #menuToggle-close:hover path {
     fill: #2979FF;
+    fill-opacity: 1;
 }
 .menulist {
     clear: both;
@@ -110,31 +111,40 @@ header h1 {
     color: #2979FF;
 }
 
-
-
-
 /*
     Swatches
 */
 .swatchesWrap {
     flex: auto;
     padding: 16px;
-    overflow: scroll;
+    overflow: auto;
+    -webkit-user-select: none;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.6);
+    border: 3px solid #fff;
+    border-radius:2em;
 }
 #swatches {
     width: 360px;
 }
 #swatches a {
+    display: block;
     float: left;
     width: 30px;
     height: 30px;
     background: #000;
 }
 #swatches a.focus {
-    /*position: relative;*/
     border: 2px solid #fff;
     box-sizing: border-box;
 }
+
 
 /*
     Tools
@@ -183,7 +193,6 @@ header h1 {
     opacity: 0;
     display: block;
     position: absolute;
-    /*z-index: 100;*/
     top: -40px;
     background: rgba(0, 0, 0, .8);
     color: #fff;
@@ -193,7 +202,7 @@ header h1 {
     transition: all .5s ease;
 }
 .actions a#icon_fill span {
-    left: -40%;
+    left: -30%;
 }
 .actions a#icon_stroke span {
     left: -70%;

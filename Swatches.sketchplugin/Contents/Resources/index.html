@@ -9,8 +9,9 @@
 function removeSwatches() {
     $("#swatches").empty();
 }
-function initSwatches(title) {
+function initSwatches(title, func) {
     $("#title").text(title);
+    window.location.hash = "#" + func;
     // init
     $("#swatches a").eq(0).addClass("focus");
     updateInterface($("#swatches a").eq(0).attr("href"), $("#swatches a").eq(0).attr("title"));
@@ -71,6 +72,7 @@ function initSwatches(title) {
 
     <div class="swatchesWrap">
         <div id="swatches"></div>
+
     </div>
 
     <div class="tools">
@@ -83,6 +85,7 @@ function initSwatches(title) {
             <li>
                 <a id="icon_fill" href="#">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z M8,8 L16,8 L16,16 L8,16 L8,8 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
                     <span>Fill</span>
@@ -91,6 +94,7 @@ function initSwatches(title) {
             <li>
                 <a id="icon_stroke" href="#">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
                     <span>Stroke</span>
@@ -99,6 +103,7 @@ function initSwatches(title) {
             <li>
                 <a id="icon_add" href="#">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M11,11 L9,11 L9,13 L11,13 L11,15 L13,15 L13,13 L15,13 L15,11 L13,11 L13,9 L11,9 L11,11 Z M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
                     <span>Add to Document Colors</span>
@@ -113,17 +118,17 @@ $(document).ready(function(){
         $("#menu").css("display", "block");
         $("#menu").animate({
             "height" : $("body").height()
-        });
+        }, 200);
     });
     $("#menuToggle-close").click(function(){
         $("#menu").animate({
             "height" : "0"
-        });
+        }, 200);
     });
     $(".menulist a").click(function(){
         $("#menu").animate({
             "height" : "0"
-        });
+        }, 200);
     });
 });
 </script>

@@ -390,7 +390,7 @@ var init_material_design_colors = function() {
             }
         }
 
-        initSwatches(title);
+        initSwatches(title, "init_material_design_colors");
 
     });
 }
