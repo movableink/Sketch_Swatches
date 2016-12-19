@@ -11,26 +11,27 @@ function removeSwatches() {
 }
 function initSwatches(title, func) {
     $("#title").text(title);
-    window.location.hash = "#" + func;
+    window.location.hash = func;
     // init
-    $("#swatches a").eq(0).addClass("focus");
-    updateInterface($("#swatches a").eq(0).attr("href"), $("#swatches a").eq(0).attr("title"));
-    $("#swatches a").each(function(){
+    $("#swatches button").eq(0).addClass("focus");
+    updateInterface($("#swatches button").eq(0).text(), $("#swatches button").eq(0).attr("title"));
+    $("#swatches button").each(function(){
         $(this).click(function(){
-            $("#swatches a.focus").each(function(){
+            $("#swatches button.focus").each(function(){
                 $(this).removeClass("focus");
             });
             $(this).addClass("focus");
-            updateInterface($(this).attr("href"), $(this).attr("title"));
+            updateInterface($(this).text(), $(this).attr("title"));
         });
     });
     function updateInterface(hex, name) {
-        $("#colorPreview").css("backgroundColor", hex);
+        $("#colorPreview").css("backgroundColor", "#" + hex);
         $("#colorName").text(name);
-        $("#colorHex").text(hex);
-        $("#icon_fill").attr("href", hex + "-fill");
-        $("#icon_stroke").attr("href", hex + "-stroke");
-        $("#icon_add").attr("href", hex + "-add");
+        $("#colorHex").text("#" + hex);
+        $("#icon_fill").attr("onclick", 'window.location.hash="' + hex +'-fill"');
+        $("#icon_stroke").attr("onclick", 'window.location.hash="' + hex +'-stroke"');
+        $("#icon_add").attr("onclick", 'window.location.hash="' + hex +'-add"');
+        $("#icon_copy").attr("onclick", 'window.location.hash="' + hex +'-copy"');
     }
 }
 </script>
@@ -47,17 +48,17 @@ function initSwatches(title, func) {
 <div class="container">
     <header>
         <h1 id="title">Swatches</h1>
-        <a id="menuToggle" href="#menu">
+        <button id="menuToggle">
             <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <path d="M4,17 L20,17 L20,19 L4,19 L4,17 Z M4,11 L20,11 L20,13 L4,13 L4,11 Z M4,5 L20,5 L20,7 L4,7 L4,5 Z" fill-opacity="0.7" fill="#000000"></path>
             </svg>
-        </a>
+        </button>
         <div id="menu">
-            <a id="menuToggle-close" href="#">
+            <button id="menuToggle-close">
                 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <path fill-opacity="0.7" fill="#000000" d="M12 10.5857864 7.05025253 5.63603897 5.63603897 7.05025253 10.5857864 12 5.63603897 16.9497475 7.05025253 18.363961 12 13.4142136 16.9497475 18.363961 18.363961 16.9497475 13.4142136 12 18.363961 7.05025253 16.9497475 5.63603897z"></path>
                 </svg>
-            </a>
+            </button>
             <ul class="menulist">
                 <!--
                     Add Color list here
@@ -72,7 +73,6 @@ function initSwatches(title, func) {
 
     <div class="swatchesWrap">
         <div id="swatches"></div>
-
     </div>
 
     <div class="tools">
@@ -83,31 +83,40 @@ function initSwatches(title, func) {
         </div>
         <ul class="actions">
             <li>
-                <a id="icon_fill" href="#">
+                <button id="icon_fill">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z M8,8 L16,8 L16,16 L8,16 L8,8 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
-                    <span>Fill</span>
-                </a>
+                    <span>Apply to Fill</span>
+                </button>
             </li>
             <li>
-                <a id="icon_stroke" href="#">
+                <button id="icon_stroke">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
-                    <span>Stroke</span>
-                </a>
+                    <span>Apply to Stroke</span>
+                </button>
             </li>
             <li>
-                <a id="icon_add" href="#">
+                <button id="icon_add">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M11,11 L9,11 L9,13 L11,13 L11,15 L13,15 L13,13 L15,13 L15,11 L13,11 L13,9 L11,9 L11,11 Z M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
                     <span>Add to Document Colors</span>
-                </a>
+                </button>
+            </li>
+            <li>
+                <button id="icon_copy">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
+                        <path d="M18,10 L18,6 L6,6 L6,18 L10,18 L10,10 L18,10 Z M4,4 L20,4 L20,20 L4,20 L4,4 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
+                    </svg>
+                    <span>Copy Color Code</span>
+                </button>
             </li>
         </ul>
     </div>

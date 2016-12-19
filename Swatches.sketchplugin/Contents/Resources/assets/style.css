@@ -24,11 +24,22 @@ body, ul, p {
     margin: 0;
     padding: 0;
 }
-
+button {
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    color: inherit;
+    text-decoration: underline;
+}
 html, body {
     height: 100%;
     overflow: hidden;
+    -webkit-user-select: none;
 }
+
 .container {
     height: 100%;
     display: flex;
@@ -118,7 +129,6 @@ header h1 {
     flex: auto;
     padding: 16px;
     overflow: auto;
-    -webkit-user-select: none;
 }
 ::-webkit-scrollbar {
     width: 12px;
@@ -133,14 +143,16 @@ header h1 {
 #swatches {
     width: 360px;
 }
-#swatches a {
+#swatches button {
     display: block;
     float: left;
     width: 30px;
     height: 30px;
+    overflow: hidden;
+    text-indent: -9999px;
     background: #000;
 }
-#swatches a.focus {
+#swatches button.focus {
     border: 2px solid #fff;
     box-sizing: border-box;
 }
@@ -201,14 +213,17 @@ header h1 {
     border-radius: 4px;
     transition: all .5s ease;
 }
-.actions a#icon_fill span {
-    left: -30%;
+#icon_fill span {
+    left: -30px;
 }
-.actions a#icon_stroke span {
-    left: -70%;
+#icon_stroke span {
+    left: -40px;
 }
-.actions a#icon_add span {
-    right: 0%;
+#icon_add span {
+    right: -30px;
+}
+#icon_copy span {
+    right: 0;
 }
 .actions svg {
     display: block;
