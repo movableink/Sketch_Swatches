@@ -1,5 +1,4 @@
-var init_ral_colors = function() {
-    var title = "RAL Colors";
+var init_ral_colors = function(title) {
     var colors = [
         ["RAL 1000 Green beige", "BEBD7F"],
         ["RAL 1001 Beige", "C2B078"],
@@ -221,12 +220,14 @@ var init_ral_colors = function() {
         removeSwatches();
 
         for (var i = 0; i < colors.length; i ++) {
+            var hex = colors[i][1];
+            var name = colors[i][0];
             $("#swatches").append(
-                '<a href="#' + colors[i][1] + '" title="' + colors[i][0] + '" style="background:#' + colors[i][1] + ';"></a>'
+                '<button onclick="window.location.hash=\'' + hex + '\'" title="' + name + '" style="background:#' + hex + ';">' + hex + '</button>'
             );
         }
 
-        initSwatches(title, "init_ral_colors");
+        initSwatches(title);
 
 
     });

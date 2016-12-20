@@ -1,7 +1,7 @@
 {
     "commands" : [
         {
-            "script" : "script.cocoascript",
+            "script" : "swatches.cocoascript",
             "name" : "Swatches",
             "handlers" : {
                 "run" : "onRun"

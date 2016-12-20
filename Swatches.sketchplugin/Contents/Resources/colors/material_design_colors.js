@@ -1,7 +1,5 @@
 
-var init_material_design_colors = function() {
-
-    var title = "Material Design";
+var init_material_design_colors = function(title) {
     var colors = [
         {
             "title" : "Red",
@@ -390,7 +388,7 @@ var init_material_design_colors = function() {
             }
         }
 
-        initSwatches(title, "init_material_design_colors");
+        initSwatches(title);
 
     });
 }

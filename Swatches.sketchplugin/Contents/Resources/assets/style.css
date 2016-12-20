@@ -33,6 +33,7 @@ button {
     outline: 0;
     color: inherit;
     text-decoration: underline;
+    font: inherit;
 }
 html, body {
     height: 100%;
@@ -109,16 +110,17 @@ header h1 {
 .menulist li {
     height: 48px;
 }
-.menulist a {
-    display: block;
-    margin: 0 16px;
+.menulist button {
+    width: 100%;
+    padding: 0 16px;
     text-align: center;
     font-size: 20px;
     color: rgba(0, 0, 0, 0.70);
+    height: 48px;
     line-height: 48px;
     text-decoration: none;
 }
-.menulist a:hover {
+.menulist button:hover {
     color: #2979FF;
 }
 

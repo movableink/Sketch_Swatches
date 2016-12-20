@@ -1,7 +1,5 @@
 
-var init_html_name_colors = function() {
-
-    var title = "HTML Name Colors";
+var init_html_name_colors = function(title) {
     var colors = [
         ["IndianRed", "CD5C5C"],
         ["LightCoral", "F08080"],
@@ -153,12 +151,14 @@ var init_html_name_colors = function() {
         removeSwatches();
 
         for (var i = 0; i < colors.length; i ++) {
+            var hex = colors[i][1];
+            var name = colors[i][0];
             $("#swatches").append(
-                '<a href="#' + colors[i][1] + '" title="' + colors[i][0] + '" style="background:#' + colors[i][1] + ';"></a>'
+                '<button onclick="window.location.hash=\'' + hex + '\'" title="' + name + '" style="background:#' + hex + ';">' + hex + '</button>'
             );
         }
 
-        initSwatches(title, "init_html_name_colors");
+        initSwatches(title);
 
     });
 }
