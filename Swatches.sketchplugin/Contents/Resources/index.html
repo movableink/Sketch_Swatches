@@ -3,14 +3,32 @@
 <head>
 <meta charset="utf-8">
 <title>Swatches</title>
+<meta name="Author" content="Ashung.hung@gmail.com">
 <link rel="stylesheet" href="assets/style.css">
 <script src="assets/jquery-3.1.1.min.js"></script>
-<script src="colors/swatches.js"></script>
+<!-- <script src="colors/swatches.js"></script> -->
 <script src="assets/common.js"></script>
 
+<script>
+var swatches = [
+    {
+        "title" : "Material Design",
+        "handler" : "init_material_design_colors"
+    },
+    {
+        "title" : "HTML Name",
+        "handler" : "init_html_name_colors"
+    },
+    {
+        "title" : "RAL",
+        "handler" : "init_ral_colors"
+    },
+];
+</script>
 <script src="colors/material_design_colors.js"></script>
 <script src="colors/html_name_colors.js"></script>
 <script src="colors/ral_colors.js"></script>
+
 
 </head>
 <body>
@@ -81,4 +99,38 @@
         </ul>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        // Load Menu
+        var menu = $('<ul class="menulist"></ul>');
+        for (var i = 0; i < swatches.length; i++) {
+            var title = swatches[i].title;
+            var handler = swatches[i].handler;
+            var liCode =
+'<li>\
+<button onclick="' + handler + '(\'' + title + '\');window.location.hash=\'' +
+handler + '\'" value="' + handler + '">' + title + '</button></li>';
+            menu.append(liCode);
+        }
+        $("#menu").append(menu);
+
+        // Menu
+        $("#menuToggle").click(function() {
+            $("#menu").css("display", "block");
+            $("#menu").animate({
+                "height" : $("body").height()
+            }, 200);
+        });
+        $("#menuToggle-close").click(function(){
+            $("#menu").animate({
+                "height" : "0"
+            }, 200);
+        });
+        $(".menulist button").click(function() {
+            $("#menu").animate({
+                "height" : "0"
+            }, 200);
+        });
+    });
+</script>
 </body>

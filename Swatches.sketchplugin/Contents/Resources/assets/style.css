@@ -1,3 +1,9 @@
+/*==========================================================
+    Swatches Plugin for Sketch
+    Author: Ashung Hung
+    Homepage: https://github.com/Ashung/Sketch_Swatches
+    License: CC-BY 4.0
+==========================================================*/
 
 @font-face {
     font-family: "SourceSans";
@@ -11,13 +17,6 @@
     font-weight: bold;
     src: local('Source Sans Pro'),
     url("SourceSansPro-Bold.ttf") format('truetype');
-}
-
-@font-face {
-    font-family: "SourceCode";
-    font-weight: bold;
-    src: local('Source Code Pro'),
-    url("SourceCodePro.ttf") format('truetype');
 }
 
 body, ul, p {
@@ -188,7 +187,7 @@ header h1 {
 }
 #colorHex {
     color: rgba(0, 0, 0, .5);
-    font: 12px/15px "SourceCode", "Source Code Pro", monospace;
+    font: 12px/14px Monaco, monospace;
 }
 
 /*
