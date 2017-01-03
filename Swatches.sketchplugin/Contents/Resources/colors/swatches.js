@@ -1,17 +1,31 @@
+
 var swatches = [
     {
         "title" : "Material Design",
-        "handler" : "init_material_design_colors",
-        "script" : "colors/material_design_colors.js"
+        "handler" : "init_material_design_colors"
     },
     {
-        "title" : "HTML Name",
-        "handler" : "init_html_name_colors",
-        "script" : "colors/html_name_colors.js"
+        "title" : "Open Color",
+        "handler" : "init_open_color"
     },
     {
-        "title" : "RAL",
-        "handler" : "init_ral_colors",
-        "script" : "colors/ral_colors.js"
+        "title" : "Web Colors",
+        "handler" : "init_web_colors"
     },
+    {
+        "title" : "Name Colors",
+        "handler" : "init_name_colors"
+    },
+    {
+        "title" : "RAL Classic",
+        "handler" : "init_ral_classic_colors"
+    },
+    {
+        "title" : "中国の伝統色",
+        "handler" : "init_traditinal_chinese_colors"
+    },
+    {
+        "title" : "日本の伝統色",
+        "handler" : "init_traditinal_japanese_colors"
+    }
 ];

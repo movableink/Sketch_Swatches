@@ -6,29 +6,16 @@
 <meta name="Author" content="Ashung.hung@gmail.com">
 <link rel="stylesheet" href="assets/style.css">
 <script src="assets/jquery-3.1.1.min.js"></script>
-<!-- <script src="colors/swatches.js"></script> -->
 <script src="assets/common.js"></script>
+<script src="colors/swatches.js"></script>
 
-<script>
-var swatches = [
-    {
-        "title" : "Material Design",
-        "handler" : "init_material_design_colors"
-    },
-    {
-        "title" : "HTML Name",
-        "handler" : "init_html_name_colors"
-    },
-    {
-        "title" : "RAL",
-        "handler" : "init_ral_colors"
-    },
-];
-</script>
 <script src="colors/material_design_colors.js"></script>
-<script src="colors/html_name_colors.js"></script>
-<script src="colors/ral_colors.js"></script>
-
+<script src="colors/web_colors.js"></script>
+<script src="colors/ral_classic_colors.js"></script>
+<script src="colors/traditional_japanese_colors.js"></script>
+<script src="colors/traditional_chinese_colors.js"></script>
+<script src="colors/open_color.js"></script>
+<script src="colors/name_colors.js"></script>
 
 </head>
 <body>
@@ -66,8 +53,8 @@ var swatches = [
                         <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z M8,8 L16,8 L16,16 L8,16 L8,8 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
-                    <span>Apply to Fill</span>
                 </button>
+                <span>Apply to Fill</span>
             </li>
             <li>
                 <button id="icon_stroke">
@@ -75,8 +62,8 @@ var swatches = [
                         <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
-                    <span>Apply to Stroke</span>
                 </button>
+                <span>Apply to Stroke</span>
             </li>
             <li>
                 <button id="icon_add">
@@ -84,8 +71,8 @@ var swatches = [
                         <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M11,11 L9,11 L9,13 L11,13 L11,15 L13,15 L13,13 L15,13 L15,11 L13,11 L13,9 L11,9 L11,11 Z M4,4 L20,4 L20,20 L4,20 L4,4 Z M6,6 L18,6 L18,18 L6,18 L6,6 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
-                    <span>Add to Document Colors</span>
                 </button>
+                <span>Add to Document Colors</span>
             </li>
             <li>
                 <button id="icon_copy">
@@ -93,8 +80,8 @@ var swatches = [
                         <rect x="0" y="0" width="24" height="24" fill="#FFFFFF"></rect>
                         <path d="M18,10 L18,6 L6,6 L6,18 L10,18 L10,10 L18,10 Z M4,4 L20,4 L20,20 L4,20 L4,4 Z" fill-opacity="0.7" fill="#000000" fill-rule="evenodd"></path>
                     </svg>
-                    <span>Copy Color Code</span>
                 </button>
+                <span>Copy Color Code</span>
             </li>
         </ul>
     </div>
@@ -106,10 +93,7 @@ var swatches = [
         for (var i = 0; i < swatches.length; i++) {
             var title = swatches[i].title;
             var handler = swatches[i].handler;
-            var liCode =
-'<li>\
-<button onclick="' + handler + '(\'' + title + '\');window.location.hash=\'' +
-handler + '\'" value="' + handler + '">' + title + '</button></li>';
+            var liCode = '<li><button onclick="' + handler + '(\'' + title + '\');window.location.hash=\'' + handler + '\'" value="' + handler + '">' + title + '</button></li>';
             menu.append(liCode);
         }
         $("#menu").append(menu);
@@ -132,5 +116,10 @@ handler + '\'" value="' + handler + '">' + title + '</button></li>';
             }, 200);
         });
     });
+
+//     document.oncontextmenu = function() {
+//         window.event.returnValue = false;
+//     }
+
 </script>
 </body>

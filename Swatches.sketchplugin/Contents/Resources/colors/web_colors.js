@@ -1,5 +1,5 @@
 
-var init_html_name_colors = function(title) {
+var init_web_colors = function(title) {
     var colors = [
         ["IndianRed", "CD5C5C"],
         ["LightCoral", "F08080"],
@@ -7,6 +7,9 @@ var init_html_name_colors = function(title) {
         ["DarkSalmon", "E9967A"],
         ["LightSalmon", "FFA07A"],
         ["Crimson", "DC143C"],
+        ["",""],
+        ["",""],
+        ["",""],
         ["Red", "FF0000"],
         ["FireBrick", "B22222"],
         ["DarkRed", "8B0000"],
@@ -161,4 +164,4 @@ var init_html_name_colors = function(title) {
         initSwatches(title);
 
     });
-}
+};

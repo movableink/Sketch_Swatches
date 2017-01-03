@@ -26,10 +26,10 @@ function initSwatches(title) {
     function updateInterface(hex, name) {
         $("#colorPreview").css("backgroundColor", "#" + hex);
         $("#colorName").text(name);
-        $("#colorHex").text("#" + hex);
-        $("#icon_fill").attr("onclick", 'window.location.hash="' + hex +'-fill"');
-        $("#icon_stroke").attr("onclick", 'window.location.hash="' + hex +'-stroke"');
-        $("#icon_add").attr("onclick", 'window.location.hash="' + hex +'-add"');
-        $("#icon_copy").attr("onclick", 'window.location.hash="' + hex +'-copy"');
+        $("#colorHex").text("#" + hex.toUpperCase());
+        $("#icon_fill").attr("onclick", 'window.location.hash="' + hex.toUpperCase() +'-fill"');
+        $("#icon_stroke").attr("onclick", 'window.location.hash="' + hex.toUpperCase() +'-stroke"');
+        $("#icon_add").attr("onclick", 'window.location.hash="' + hex.toUpperCase() +'-add"');
+        $("#icon_copy").attr("onclick", 'window.location.hash="' + hex.toUpperCase() +'-copy"');
     }
 }

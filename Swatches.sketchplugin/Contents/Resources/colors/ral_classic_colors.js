@@ -1,4 +1,4 @@
-var init_ral_colors = function(title) {
+var init_ral_classic_colors = function(title) {
     var colors = [
         ["RAL 1000 Green beige", "BEBD7F"],
         ["RAL 1001 Beige", "C2B078"],
@@ -231,4 +231,4 @@ var init_ral_colors = function(title) {
 
 
     });
-}
+};

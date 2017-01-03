@@ -1,1 +1,1 @@
-init_html_name_colors("HTML Name")
+init_material_design_colors("Material Design")

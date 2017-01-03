@@ -29,20 +29,16 @@ var onRun = function(context) {
     var windowObject = webView.windowScriptObject();
     var delegate = new MochaJSDelegate({
         "webView:didFinishLoadForFrame:" : (function(webView, webFrame) {
-
-
-            var t = getContentFromFile(context.plugin.urlForResourceNamed("init.js").path());
-
-            windowObject.evaluateWebScript(t);
-
-            log(t);
+            var initCode = getContentFromFile(context.plugin.urlForResourceNamed("init.js").path());
+            windowObject.evaluateWebScript(initCode);
         }),
         "webView:didChangeLocationWithinPageForFrame:" : (function(webView, webFrame) {
             var locationHash = windowObject.evaluateWebScript("window.location.hash");
+
             log(locationHash);
 
-            // Init new swatch
-            if (/^#init_.*/.test(locationHash)) {
+            // Save last opened swatch.
+            if (/^#init_.*/i.test(locationHash)) {
                 var handler = locationHash.substr(1);
                 var initJSCode = handler + '("' + getTitleFromHandler(handler) + '")';
                 writeContentToFile(
@@ -51,7 +47,8 @@ var onRun = function(context) {
                 );
             }
 
-            if (/^#[A-F0-9]{6}-fill/.test(locationHash)) {
+             // Fill
+            if (/^#[A-F0-9]{6}-fill/i.test(locationHash)) {
                 var selection = doc.selectedLayers();
                 var hex = locationHash.match(/^#([A-F0-9]{6})/)[1];
                 if (selection.count() > 0) {
@@ -64,8 +61,35 @@ var onRun = function(context) {
                 }
             }
 
+            // Stroke
+            if (/^#[A-F0-9]{6}-stroke/i.test(locationHash)) {
+                var selection = doc.selectedLayers();
+                var hex = locationHash.match(/^#([A-F0-9]{6})/)[1];
+                if (selection.count() > 0) {
+                    for (var i = 0; i < selection.count(); i++) {
+                        var layer = selection.objectAtIndex(i);
+                        setStrokeColor(layer, hexToMSColor(hex));
+                    }
+                } else {
+                    doc.showMessage("Please selected more than one layer.");
+                }
+            }
 
+            // Add to document colors
+            if (/^#[A-F0-9]{6}-add/i.test(locationHash)) {
+                var hex = locationHash.match(/^#([A-F0-9]{6})/)[1];
+                addColorToDocumentColors(context, hexToMSColor(hex));
+                doc.showMessage("The color #" + hex + " has add to document colors.");
+            }
 
+           // Copy
+           if (/^#[A-F0-9]{6}-copy/i.test(locationHash)) {
+               var hex = locationHash.match(/^#([A-F0-9]{6})/)[1];
+               var colorName = windowObject.evaluateWebScript("document.getElementById('colorName').innerHTML");
+               var message = "The color #" + hex + " has been copied.";
+               var code = "#" + hex + " /* " + colorName + " */";
+               copyToClipBoard(context, message, code);
+           }
 
         })
     });

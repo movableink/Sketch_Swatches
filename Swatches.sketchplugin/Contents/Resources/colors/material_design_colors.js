@@ -1,4 +1,4 @@
-
+// Google Material Design
 var init_material_design_colors = function(title) {
     var colors = [
         {
@@ -391,4 +391,4 @@ var init_material_design_colors = function(title) {
         initSwatches(title);
 
     });
-}
+};

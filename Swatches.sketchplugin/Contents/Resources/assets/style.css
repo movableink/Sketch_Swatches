@@ -104,10 +104,10 @@ header h1 {
 .menulist {
     clear: both;
     overflow: scroll;
-    max-height: 300px;
+    /*max-height: 300px;*/
 }
 .menulist li {
-    height: 48px;
+    height: auto;
 }
 .menulist button {
     width: 100%;
@@ -115,8 +115,8 @@ header h1 {
     text-align: center;
     font-size: 20px;
     color: rgba(0, 0, 0, 0.70);
-    height: 48px;
-    line-height: 48px;
+    height: 40px;
+    line-height: 40px;
     text-decoration: none;
 }
 .menulist button:hover {
@@ -151,7 +151,7 @@ header h1 {
     height: 30px;
     overflow: hidden;
     text-indent: -9999px;
-    background: #000;
+    background: #fff;
 }
 #swatches button.focus {
     border: 2px solid #fff;
@@ -170,7 +170,7 @@ header h1 {
 }
 .colorInfo {
     float: left;
-    width: 200px;
+    width: 240px;
 }
 #colorPreview {
     width: 24px;
@@ -184,6 +184,9 @@ header h1 {
     display: block;
     padding-top: 10px;
     color: rgba(0, 0, 0, .7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 #colorHex {
     color: rgba(0, 0, 0, .5);
@@ -204,7 +207,7 @@ header h1 {
 }
 .actions span {
     opacity: 0;
-    display: block;
+    display: none;
     position: absolute;
     top: -40px;
     background: rgba(0, 0, 0, .8);
@@ -214,16 +217,16 @@ header h1 {
     border-radius: 4px;
     transition: all .5s ease;
 }
-#icon_fill span {
+#icon_fill + span {
     left: -30px;
 }
-#icon_stroke span {
+#icon_stroke + span {
     left: -40px;
 }
-#icon_add span {
+#icon_add + span {
     right: -30px;
 }
-#icon_copy span {
+#icon_copy + span {
     right: 0;
 }
 .actions svg {
@@ -236,6 +239,7 @@ header h1 {
     fill: #2979FF;
     fill-opacity: 1;
 }
-.actions svg:hover + span {
+.actions button:hover + span {
     opacity: 1;
+    display: block;
 }
