@@ -69,6 +69,7 @@ header h1 {
     display: block;
     width: 24px;
     height: 24px;
+    min-width: 24px;
     overflow: hidden;
     margin: 16px;
 }
@@ -103,8 +104,8 @@ header h1 {
 }
 .menulist {
     clear: both;
-    overflow: scroll;
-    /*max-height: 300px;*/
+    overflow: auto;
+    max-height: 400px;
 }
 .menulist li {
     height: auto;
@@ -113,11 +114,12 @@ header h1 {
     width: 100%;
     padding: 0 16px;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(0, 0, 0, 0.70);
-    height: 40px;
-    line-height: 40px;
+    height: 36px;
+    line-height: 36px;
     text-decoration: none;
+    white-space: nowrap;
 }
 .menulist button:hover {
     color: #2979FF;

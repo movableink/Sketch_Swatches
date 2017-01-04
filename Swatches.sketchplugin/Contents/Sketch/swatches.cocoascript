@@ -1,5 +1,5 @@
 @import "MochaJSDelegate.js";
-@import "../Resources/colors/swatches.js";
+@import "../Resources/swatches.js";
 
 var onRun = function(context) {
 
