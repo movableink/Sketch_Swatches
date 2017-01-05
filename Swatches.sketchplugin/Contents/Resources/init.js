@@ -1,1 +1,1 @@
-init_material_design_colors("Material Design")
+init_material_design_colors("Google Material Design")

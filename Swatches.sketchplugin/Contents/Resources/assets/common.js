@@ -16,11 +16,13 @@ function initSwatches(title) {
     updateInterface($("#swatches button").eq(0).text(), $("#swatches button").eq(0).attr("title"));
     $("#swatches button").each(function(){
         $(this).click(function(){
-            $("#swatches button.focus").each(function(){
-                $(this).removeClass("focus");
-            });
-            $(this).addClass("focus");
-            updateInterface($(this).text(), $(this).attr("title"));
+            if ($(this).text() != "") {
+                $("#swatches button.focus").each(function(){
+                    $(this).removeClass("focus");
+                });
+                $(this).addClass("focus");
+                updateInterface($(this).text(), $(this).attr("title"));
+            }
         });
     });
     function updateInterface(hex, name) {

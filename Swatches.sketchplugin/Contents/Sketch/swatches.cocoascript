@@ -56,6 +56,7 @@ var onRun = function(context) {
                         var layer = selection.objectAtIndex(i);
                         setFillColor(layer, hexToMSColor(hex));
                     }
+                    doc.reloadInspector();
                 } else {
                     doc.showMessage("Please selected more than one layer.");
                 }
@@ -70,6 +71,7 @@ var onRun = function(context) {
                         var layer = selection.objectAtIndex(i);
                         setStrokeColor(layer, hexToMSColor(hex));
                     }
+                    doc.reloadInspector();
                 } else {
                     doc.showMessage("Please selected more than one layer.");
                 }
@@ -101,6 +103,31 @@ var onRun = function(context) {
     swatchesWindow.center();
     swatchesWindow.makeKeyAndOrderFront(nil);
 };
+
+
+var website = function(context) {
+    openUrlInBrowser(context.plugin.homepageURL() + "");
+};
+
+var reportIssue = function(context) {
+    openUrlInBrowser(context.plugin.homepageURL() + "/issues");
+};
+
+var donateViaPaypal = function() {
+    openUrlInBrowser("https://www.paypal.me/ashung/2");
+};
+
+var donateViaWechat = function() {
+    openUrlInBrowser("http://ashung.github.io/Automate-Sketch/css/donate_wechat_rmb_10.png");
+};
+
+var donateViaAlipay = function() {
+    openUrlInBrowser("http://ashung.github.io/Automate-Sketch/css/donate_alipay_rmb_10.png");
+};
+
+function openUrlInBrowser(url) {
+    NSWorkspace.sharedWorkspace().openURL(NSURL.URLWithString(url));
+}
 
 function getTitleFromHandler(handler) {
     for (var i = 0; i < swatches.length; i++) {
