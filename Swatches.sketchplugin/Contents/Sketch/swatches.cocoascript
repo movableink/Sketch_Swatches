@@ -65,7 +65,7 @@ var onRun = function(context) {
 
              // Fill
             if (/^#[A-F0-9]{6}-fill/i.test(locationHash)) {
-                var selection = doc.selectedLayers();
+                var selection = doc.selectedLayers().layers();
                 var hex = locationHash.match(/^#([A-F0-9]{6})/)[1];
                 if (selection.count() > 0) {
                     for (var i = 0; i < selection.count(); i++) {
@@ -80,7 +80,7 @@ var onRun = function(context) {
 
             // Stroke
             if (/^#[A-F0-9]{6}-stroke/i.test(locationHash)) {
-                var selection = doc.selectedLayers();
+                var selection = doc.selectedLayers().layers();
                 var hex = locationHash.match(/^#([A-F0-9]{6})/)[1];
                 if (selection.count() > 0) {
                     for (var i = 0; i < selection.count(); i++) {
