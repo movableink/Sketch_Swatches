@@ -5,25 +5,11 @@
     License: CC-BY 4.0
 ==========================================================*/
 
-@font-face {
-    font-family: "SourceSans";
-    font-weight: normal;
-    src: local('Source Sans Pro'),
-    url("SourceSansPro-Regular.ttf") format('truetype');
-}
-
-@font-face {
-    font-family: "SourceSans";
-    font-weight: bold;
-    src: local('Source Sans Pro'),
-    url("SourceSansPro-Bold.ttf") format('truetype');
-}
-
 body, ul, p {
     margin: 0;
     padding: 0;
 }
-button, input {
+button, input[type="text"] {
     -webkit-appearance: none;
     border: none;
     background: none;
@@ -170,7 +156,8 @@ header h1 {
 .swatches li {
     list-style: none;
 }
-.swatches button {
+.swatches button, .swatches a, .swatches input[type="radio"] {
+    /*-webkit-appearance: none;*/
     display: block;
     float: left;
     width: 30px;
@@ -181,8 +168,8 @@ header h1 {
     background: #fff;
     box-sizing: border-box;
 }
-.swatches button.focus {
-    border: 2px solid #fff;
+.swatches button.focus, .swatches a.focus, .swatches Xinput[type="radio"]:checked  {
+    border: 2px solid #f00;
 }
 .swatches .colorgroup {
     clear: both;
@@ -191,14 +178,14 @@ header h1 {
     color: #999;
 }
 
-.search {
+input.search {
     display: block;
     font-size: 14px;
     color: #666;
     text-decoration: none;
     margin: 0 0 16px;
     padding: 8px 16px 8px 32px;
-    width: 360px;
+    width: 100%;
     height: 32px;
     border-radius: 16px;
     box-sizing: border-box;

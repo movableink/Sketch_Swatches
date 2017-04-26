@@ -12,14 +12,14 @@ function removeSwatches() {
 function initSwatches(title) {
     $("#title").text(title);
     // init
-    $("#swatches button").eq(0).addClass("focus");
-    updateInterface($("#swatches button").eq(0).text(), $("#swatches button").eq(0).attr("title"));
-    $("#swatches button").each(function(){
+    $("#swatches a").eq(0).addClass("focus");
+    updateInterface($("#swatches a").eq(0).text(), $("#swatches a").eq(0).attr("title"));
+    $("#swatches a").each(function(){
         $(this).click(function(){
             if ($(this).text() != "") {
-                $("#swatches button.focus").each(function(){
-                    $(this).removeClass("focus");
-                });
+                // $("#swatches a.focus").each(function(){
+                //     $(this).removeClass("focus");
+                // });
                 $(this).addClass("focus");
                 updateInterface($(this).text(), $(this).attr("title"));
             }
@@ -46,6 +46,21 @@ function initSwatches(title) {
 
     var colorList = new List("swatchesWrap", options);
 }
+
+function updateInterface(hex, name) {
+
+    window.location.hash = hex;
+
+    $("#colorPreview").css("backgroundColor", "#" + hex);
+    $("#colorName").text(name);
+    $("#colorHex").text("#" + hex.toUpperCase());
+    $("#icon_fill").attr("onclick", "window.location.hash='" + hex.toUpperCase() + "-fill-'" + " + new Date().getTime();");
+    $("#icon_stroke").attr("onclick", "window.location.hash='" + hex.toUpperCase() + "-stroke-'" + " + new Date().getTime();");
+    $("#icon_add").attr("onclick", "window.location.hash='" + hex.toUpperCase() + "-add-'" + " + new Date().getTime();");
+    $("#icon_copy").attr("onclick", "window.location.hash='" + hex.toUpperCase() + "-copy-'" + " + new Date().getTime();");
+    $("#icon_save").attr("onclick", "window.location.hash='save-to-system-'" + " + new Date().getTime();");
+}
+
 
 function getAllColors() {
     var colors = [];
