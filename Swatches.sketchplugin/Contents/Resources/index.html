@@ -11,6 +11,7 @@
 <script src="assets/list.min.js"></script>
 
 <script src="colors/material_design_colors.js"></script>
+<script src="colors/ant_design_colors.js"></script>
 <script src="colors/apple_ios.js"></script>
 <script src="colors/web_colors.js"></script>
 <script src="colors/web_safe_colors.js"></script>
@@ -49,7 +50,7 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container" id="container">
     <header>
         <h1 id="title">Swatches</h1>
         <button id="menuToggle">
@@ -66,8 +67,11 @@
         </div>
     </header>
 
-    <div class="swatchesWrap" id="swatchesWrap">
+    <div class="searchWrap">
         <input class="search" placeholder="Search" />
+    </div>
+    
+    <div class="swatchesWrap" id="swatchesWrap">
         <div class="swatches">
             <ul class="list" id="swatches"></ul>
         </div>
@@ -165,9 +169,9 @@
     });
 
     // Disable right-click menu
-    document.oncontextmenu = function() {
-        window.event.returnValue = false;
-    }
+//    document.oncontextmenu = function() {
+//        window.event.returnValue = false;
+//    }
 
 </script>
 </body>

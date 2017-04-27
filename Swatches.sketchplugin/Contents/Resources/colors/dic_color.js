@@ -2240,7 +2240,7 @@ var init_dic_color = function(title) {
             var hex = colors[i][1];
             var name = colors[i][0];
             $("#swatches").append(
-                '<li><button class="palette name" onclick="window.location.hash=\'' + hex + '\'" title="' + name + '" style="background:#' + hex + ';">' + hex + '</button></li>'
+                '<li><button class="palette name" onclick="window.location.hash=\'' + hex + '\'" title="' + name + '" style="background:#' + hex + ';"><span>' + hex + '</span></button></li>'
             );
         }
 

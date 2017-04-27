@@ -44,7 +44,7 @@ function initSwatches(title) {
         ]
     };
 
-    var colorList = new List("swatchesWrap", options);
+    var colorList = new List("container", options);
 }
 
 function getAllColors() {
