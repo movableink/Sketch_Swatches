@@ -236,7 +236,7 @@ function setFillColor(layer, color) {
         }
     }
     if (layer.class() == "MSTextLayer") {
-        layer.setTextColor(color);
+        layer.changeTextColorTo(color.NSColorWithColorSpace(nil));
     }
 }
 
